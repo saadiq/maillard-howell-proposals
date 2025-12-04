@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maillard Howell | Movement is a Right</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f6f3;
+      --bg-dark: #1a1a1a;
+      --text: #1a1a1a;
+      --text-light: #666;
+      --accent: #ff4d00;
+      --accent-secondary: #0066ff;
+      --accent-green: #00c853;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .stripe-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.03;
+      background: repeating-linear-gradient(45deg, transparent, transparent 50px, var(--text) 50px, var(--text) 51px);
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      mix-blend-mode: difference;
+    }
+
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: #fff; letter-spacing: 0.05em; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      padding: 8rem 4rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transform: skewX(-5deg);
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
+    .hero-eyebrow span { transform: skewX(5deg); }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 8rem);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+    .hero-title .accent { color: var(--accent); }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 450px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, transparent 50%, var(--bg) 100%);
+      z-index: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: skewX(-5deg);
+    }
+    .btn span { transform: skewX(5deg); }
+    .btn-primary { background: var(--text); color: #fff; }
+    .btn-primary:hover { background: var(--accent); transform: skewX(-5deg) translateX(5px); }
+    .btn-secondary { background: transparent; color: var(--text); border: 2px solid var(--text); }
+    .btn-secondary:hover { background: var(--text); color: #fff; }
+
+    .problems {
+      background: var(--bg-dark);
+      color: #fff;
+      padding: 8rem 0;
+      position: relative;
+    }
+    .problems::before {
+      content: 'THE ISSUE';
+      position: absolute;
+      top: 3rem; left: 3rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+    }
+
+    .problems-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      text-align: center;
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+    .problems-title span { color: var(--accent); }
+
+    .problems-subtitle {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      font-size: 1.1rem;
+    }
+
+    .problem-cards {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0 3rem;
+    }
+
+    .problem-card {
+      flex: 0 0 350px;
+      scroll-snap-align: start;
+      padding: 3rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
+    .problem-card:last-child { border-right: none; }
+
+    .problem-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 6rem;
+      color: rgba(255,255,255,0.05);
+      position: absolute;
+      top: 1rem; right: 2rem;
+      line-height: 1;
+    }
+
+    .problem-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+    .problem-card p { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.7; }
+
+    .mission {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      min-height: 60vh;
+    }
+    .mission-image { position: relative; }
+    .mission-image img { width: 100%; height: 100%; object-fit: cover; }
+    .mission-content {
+      background: var(--accent);
+      color: #fff;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .mission-content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+    .mission-content p { font-size: 1.15rem; line-height: 1.8; opacity: 0.9; }
+
+    .pillars {
+      padding: 8rem 4rem;
+      position: relative;
+    }
+
+    .pillars-header { text-align: center; margin-bottom: 5rem; }
+    .pillars-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .pillars-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 6vw, 5rem); }
+
+    .framework-text {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+    .pillar {
+      position: relative;
+      padding: 2.5rem;
+      background: #fff;
+      border: 2px solid transparent;
+      transition: all 0.4s ease;
+      transform: skewY(-2deg);
+    }
+    .pillar:hover { border-color: var(--accent); transform: skewY(-2deg) translateY(-10px); }
+    .pillar-inner { transform: skewY(2deg); }
+
+    .pillar-icon {
+      width: 60px; height: 60px;
+      background: var(--accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      transform: rotate(-5deg);
+    }
+
+    .pillar h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.75rem; margin-bottom: 1rem; letter-spacing: 0.02em; }
+    .pillar p { color: var(--text-light); line-height: 1.7; }
+
+    .video-section {
+      background: var(--bg-dark);
+      padding: 6rem 4rem;
+      text-align: center;
+    }
+    .video-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 3rem;
+    }
+    .video-container {
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio: 16/9;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-placeholder { text-align: center; color: rgba(255,255,255,0.5); }
+    .video-placeholder svg { width: 80px; height: 80px; stroke: var(--accent); stroke-width: 1; fill: none; margin-bottom: 1rem; }
+    .video-placeholder p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    .resources {
+      padding: 8rem 4rem;
+    }
+    .resources-header { text-align: center; margin-bottom: 4rem; }
+    .resources-title { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; }
+
+    .resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .resource-card {
+      background: #fff;
+      padding: 2.5rem;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      transform: skewX(-2deg);
+    }
+    .resource-card:hover { border-color: var(--accent); }
+    .resource-card-inner { transform: skewX(2deg); }
+    .resource-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .resource-card p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .resource-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .resource-card a:hover { text-decoration: underline; }
+
+    .bio {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .bio-visual {
+      background: linear-gradient(135deg, var(--accent) 0%, #ff8c00 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+      overflow: hidden;
+    }
+    .bio-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: multiply;
+      opacity: 0.8;
+    }
+
+    .bio-content {
+      padding: 6rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .bio-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .bio-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .bio-text {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .experience-list { display: flex; flex-direction: column; gap: 1rem; }
+    .experience-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.25rem;
+      background: rgba(0,0,0,0.02);
+      transition: all 0.3s ease;
+    }
+    .experience-item:hover { background: rgba(0,0,0,0.05); transform: translateX(10px); }
+    .experience-icon {
+      width: 50px; height: 50px;
+      background: var(--text);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.05em;
+    }
+    .experience-text h4 { font-weight: 600; margin-bottom: 0.25rem; }
+    .experience-text p { color: var(--text-light); font-size: 0.9rem; }
+
+    .why-now {
+      padding: 8rem 4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .why-now-content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 5vw, 4rem);
+      margin-bottom: 2rem;
+    }
+    .why-now-content .highlight {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .why-now-content p { color: var(--text-light); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; }
+    .why-now-image { position: relative; }
+    .why-now-image img { width: 100%; height: auto; }
+
+    .cta {
+      background: var(--text);
+      color: #fff;
+      padding: 8rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .cta-image { position: relative; }
+    .cta-image img { width: 100%; height: auto; }
+    .cta-content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+    .cta-content h2 span { color: var(--accent); }
+    .cta-content > p { font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+    .cta-list { list-style: none; margin-bottom: 2.5rem; }
+    .cta-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+    }
+    .cta-list li::before { content: ''; width: 8px; height: 8px; background: var(--accent); }
+    .cta-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .cta .btn-primary { background: var(--accent); }
+    .cta .btn-primary:hover { background: #fff; color: var(--text); }
+    .cta .btn-secondary { border-color: rgba(255,255,255,0.3); color: #fff; }
+    .cta .btn-secondary:hover { background: #fff; color: var(--text); }
+
+    footer {
+      background: var(--bg-dark);
+      color: #fff;
+      padding: 4rem;
+    }
+    .footer-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; }
+    .footer-info h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; margin-bottom: 1rem; }
+    .footer-info p { color: rgba(255,255,255,0.6); max-width: 400px; margin-bottom: 1.5rem; }
+    .footer-contact { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-contact a { color: var(--accent); text-decoration: none; }
+    .footer-contact a:hover { text-decoration: underline; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+    .social-links { display: flex; gap: 2rem; }
+    .social-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.3s ease; }
+    .social-links a:hover { color: var(--accent); }
+
+    @media (max-width: 1024px) {
+      .hero, .mission, .bio, .why-now, .cta { grid-template-columns: 1fr; }
+      .hero-image { min-height: 400px; order: -1; }
+      .hero-image::before { background: linear-gradient(to top, var(--bg) 0%, transparent 50%); }
+      .bio-visual { clip-path: none; min-height: 400px; }
+      .pillars-grid, .resources-grid { grid-template-columns: 1fr; }
+      .pillar, .resource-card { transform: none; }
+      .pillar:hover { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      nav, .hero-content, .pillars, .bio-content, .why-now, .cta, footer, .resources { padding: 2rem 1.5rem; }
+      .problem-card { flex: 0 0 280px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stripe-bg"></div>
+
+  <nav>
+    <div class="logo">MAILLARD HOWELL</div>
+    <ul class="nav-links">
+      <li><a href="#issue">Issue</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#plan">Plan</a></li>
+      <li><a href="#bio">Why Me</a></li>
+      <li><a href="#cta">Help</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span>Candidate for NYC Director of Sports, Wellness & Recreation</span></div>
+      <h1 class="hero-title">A HEALTHIER, MORE ACTIVE, MORE <span class="accent">CONNECTED</span> NYC</h1>
+      <p class="hero-subtitle">A vision where every neighborhood, from Bed-Stuy to City Island, from Jackson Heights to Stapleton, has real access to movement, play, and lifelong wellbeing.</p>
+      <div class="hero-cta">
+        <a href="https://drive.google.com/file/d/1leb97DuRPGwDYeeryL2cclR2sxFDOMp1/view" target="_blank" class="btn btn-primary"><span>Strategy Deck</span></a>
+        <a href="https://drive.google.com/file/d/1l9iGU4og9TEBrJoojPvTyc3dMEc7PNbK/view" target="_blank" class="btn btn-secondary"><span>30-60-90 Plan</span></a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="assets/hero-image.jpg" alt="New York City youth playing sports">
+    </div>
+  </section>
+
+  <section class="problems" id="issue">
+    <h2 class="problems-title">NEW YORK <span>MOVES</span> — BUT NOT EQUALLY</h2>
+    <p class="problems-subtitle">NYC's movement system is fragmented. Agencies, schools, facilities, community groups, and nonprofits all work hard, but they operate separately. The issue isn't talent or effort. It's misalignment.</p>
+    <div class="problem-cards">
+      <div class="problem-card">
+        <span class="problem-number">01</span>
+        <h3>SCHOOL PE IS SHRINKING</h3>
+        <p>Physical education time has steadily decreased across many NYC schools, leaving students with fewer opportunities to move, play, and build lifelong healthy habits. The inequity is most visible in low-income districts.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-number">02</span>
+        <h3>YOUTH SPORTS PRIVATIZED</h3>
+        <p>As community leagues shrink and private clubs expand, thousands of kids—especially in underserved neighborhoods—are priced out of structured sport. Access depends more on income than interest or talent.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-number">03</span>
+        <h3>SENIORS LACK SUPPORT</h3>
+        <p>New York's older adults face barriers from unsafe sidewalks to limited programming. Many want to stay active but lack the structured support needed to maintain mobility and independence.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-number">04</span>
+        <h3>DISABILITY ACCESS LIMITED</h3>
+        <p>Adaptive programs and accessible facilities remain unevenly distributed. Too many New Yorkers with disabilities encounter barriers that prevent full participation in movement and recreation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission">
+    <div class="mission-image">
+      <img src="assets/movement-as-a-right.jpg" alt="Movement as a right">
+    </div>
+    <div class="mission-content">
+      <h2>MOVEMENT AS A RIGHT, NOT A PRIVILEGE</h2>
+      <p>My mission is to help build a coordinated movement ecosystem where every New Yorker, in every borough, at every age, of every ability has access to safe, meaningful, culturally relevant opportunities to move.</p>
+    </div>
+  </section>
+
+  <section class="pillars" id="solution">
+    <div class="pillars-header">
+      <div class="pillars-label">The Solution</div>
+      <h2 class="pillars-title">A CITYWIDE MOVEMENT FRAMEWORK</h2>
+    </div>
+    <p class="framework-text">Sports and recreation are often viewed as "nice to have," but they are among NYC's strongest tools for improving public health, mental wellbeing, school outcomes, workforce performance, and community safety.</p>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-inner">
+          <div class="pillar-icon">01</div>
+          <h3>ACCESS & EQUITY</h3>
+          <p>Ensuring every New Yorker—across every borough, age, income level, and ability—has real opportunities to move.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-inner">
+          <div class="pillar-icon">02</div>
+          <h3>COMMUNITY INFRASTRUCTURE</h3>
+          <p>Modernizing and activating the parks, facilities, and public spaces that shape our daily lives.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-inner">
+          <div class="pillar-icon">03</div>
+          <h3>LIFELONG PERFORMANCE</h3>
+          <p>Movement pathways through every stage of life—from youth play to adult recreation to aging well.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <h2>MY THOUGHTS</h2>
+    <div class="video-container">
+      <div class="video-placeholder">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+        <p>Video Coming Soon</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="resources" id="plan">
+    <div class="resources-header">
+      <div class="pillars-label">The Plan</div>
+      <h2 class="resources-title">EXPLORE MY FULL STRATEGY</h2>
+    </div>
+    <div class="resources-grid">
+      <div class="resource-card">
+        <div class="resource-card-inner">
+          <h3>STRATEGY DECK</h3>
+          <p>A 15-slide overview of challenges, opportunities, and long-term vision.</p>
+          <a href="https://drive.google.com/file/d/1leb97DuRPGwDYeeryL2cclR2sxFDOMp1/view" target="_blank">View PDF</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-inner">
+          <h3>30-60-90 & 4 YEAR PLAN</h3>
+          <p>My short and long term plan for transforming NYC's movement ecosystem.</p>
+          <a href="https://drive.google.com/file/d/1l9iGU4og9TEBrJoojPvTyc3dMEc7PNbK/view" target="_blank">View PDF</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-inner">
+          <h3>CURRICULUM VITAE</h3>
+          <p>My past 11 years building wellness programs and movement culture.</p>
+          <a href="https://drive.google.com/file/d/18bxD8FmhqtsEMXI_1ovj3-HQKVOvwjku/view" target="_blank">View PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bio" id="bio">
+    <div class="bio-visual">
+      <img src="assets/why-my-path-leads-here.jpg" alt="Maillard Howell">
+    </div>
+    <div class="bio-content">
+      <div class="bio-label">Why Me</div>
+      <h2 class="bio-title">WHY MY PATH LEADS HERE</h2>
+      <p class="bio-text">A career built around understanding systems, building culture, and designing movement-driven health strategies.</p>
+      <div class="experience-list">
+        <div class="experience-item">
+          <div class="experience-icon">RX</div>
+          <div class="experience-text">
+            <h4>Pharmaceutical Industry</h4>
+            <p>Learned systemic health challenges and gaps in population wellbeing.</p>
+          </div>
+        </div>
+        <div class="experience-item">
+          <div class="experience-icon">CF</div>
+          <div class="experience-text">
+            <h4>CrossFit Community</h4>
+            <p>Built movement culture and coached diverse communities toward health.</p>
+          </div>
+        </div>
+        <div class="experience-item">
+          <div class="experience-icon">RBK</div>
+          <div class="experience-text">
+            <h4>Reebok</h4>
+            <p>Scaled community and corporate wellness initiatives across large organizations.</p>
+          </div>
+        </div>
+        <div class="experience-item">
+          <div class="experience-icon">RKT</div>
+          <div class="experience-text">
+            <h4>Rokt</h4>
+            <p>Designed global workplace health systems focused on performance and prevention.</p>
+          </div>
+        </div>
+        <div class="experience-item">
+          <div class="experience-icon">ETR</div>
+          <div class="experience-text">
+            <h4>Eternal</h4>
+            <p>Leveraged data and behavior change science to improve long-term human health.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-now">
+    <div class="why-now-content">
+      <div class="pillars-label">The Moment</div>
+      <h2>WHY THIS MOMENT MATTERS</h2>
+      <p class="highlight">New York City is at an inflection point.</p>
+      <p>Rising inactivity, mental health strain, and widening inequity threaten the wellbeing of millions. At the same time, we're seeing unprecedented innovation, community energy, and public interest in wellness.</p>
+      <p>The opportunity is clear. We can connect schools, parks, community centers, public facilities, healthcare, and workplaces into a coordinated movement ecosystem that serves every neighborhood and every New Yorker.</p>
+    </div>
+    <div class="why-now-image">
+      <img src="assets/why-this-matters-most.jpg" alt="Why this moment matters">
+    </div>
+  </section>
+
+  <section class="cta" id="cta">
+    <div class="cta-image">
+      <img src="assets/help-amplify.jpg" alt="Help amplify this vision">
+    </div>
+    <div class="cta-content">
+      <h2>HELP AMPLIFY THIS <span>VISION</span></h2>
+      <p>If this resonates, I would appreciate your support:</p>
+      <ul class="cta-list">
+        <li>Share this page</li>
+        <li>Tag leaders, educators, and NYC officials</li>
+        <li>Spark conversations in your communities</li>
+        <li>Support movement and public wellbeing across NYC</li>
+      </ul>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary"><span>Share This Vision</span></a>
+        <a href="https://drive.google.com/file/d/18bxD8FmhqtsEMXI_1ovj3-HQKVOvwjku/view" target="_blank" class="btn btn-secondary"><span>Download CV</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>LET'S CONNECT</h3>
+        <p>Open to conversations with city leaders, educators, healthcare partners, community organizations, and New Yorkers committed to building a more active city.</p>
+        <div class="footer-contact">
+          <a href="mailto:MNHowell00@gmail.com">MNHowell00@gmail.com</a>
+          <a href="https://www.linkedin.com/in/maillardhowell/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2024 Maillard Howell</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/maillardhowell/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maillard Howell | NYC Director of Sports, Wellness & Recreation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #faf8f5;
+      --bg-warm: #f5efe6;
+      --bg-terracotta: #c4654a;
+      --bg-sage: #8b9a7d;
+      --bg-navy: #1e3a5f;
+      --text-dark: #2d2d2d;
+      --text-medium: #5a5a5a;
+      --text-light: #8a8a8a;
+      --accent-coral: #e07b54;
+      --accent-teal: #3d8b8b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.25rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(250, 248, 245, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-medium);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-coral);
+    }
+
+    /* Hero - Magazine editorial style */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      padding: 6rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-warm);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-coral);
+      width: fit-content;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent-coral);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent-coral);
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-medium);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 1.75rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn-primary {
+      background: var(--text-dark);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-coral);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      border: 1.5px solid var(--text-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-dark);
+      color: #fff;
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Quote banner */
+    .quote-banner {
+      background: var(--bg-terracotta);
+      color: #fff;
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .quote-text {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 400;
+      font-style: italic;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
+    /* Problems - Card grid with organic shapes */
+    .problems {
+      padding: 8rem 4rem;
+    }
+
+    .section-header {
+      max-width: 600px;
+      margin-bottom: 4rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-teal);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .problem-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent-coral);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .problem-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .problem-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--bg-warm);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .problem-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--accent-coral);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .problem-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .problem-card p {
+      color: var(--text-medium);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Solution Section */
+    .solution {
+      background: var(--bg-warm);
+      padding: 8rem 4rem;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .solution-content .section-eyebrow {
+      color: var(--accent-teal);
+      margin-bottom: 1rem;
+    }
+
+    .solution-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .solution-title em {
+      font-style: italic;
+      color: var(--accent-coral);
+    }
+
+    .solution-text {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .solution-visual {
+      position: relative;
+    }
+
+    .solution-visual img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    /* Pillars - Overlapping cards */
+    .pillars {
+      background: var(--bg-navy);
+      color: #fff;
+      padding: 8rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillars::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .pillars .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 5rem;
+    }
+
+    .pillars .section-eyebrow {
+      color: var(--accent-coral);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pillar {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.4s ease;
+    }
+
+    .pillar:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-5px);
+    }
+
+    .pillar-number {
+      font-family: 'Fraunces', serif;
+      font-size: 3rem;
+      color: var(--accent-coral);
+      opacity: 0.5;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .pillar h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .pillar p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+    }
+
+    /* Video Section */
+    .video-section {
+      padding: 8rem 4rem;
+      text-align: center;
+    }
+
+    .video-section .section-header {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .video-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      background: var(--bg-warm);
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-sage) 0%, var(--bg-navy) 100%);
+      color: #fff;
+    }
+
+    .video-placeholder svg {
+      width: 80px;
+      height: 80px;
+      stroke: #fff;
+      stroke-width: 1.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .video-placeholder span {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      opacity: 0.9;
+    }
+
+    /* Bio - Editorial layout */
+    .bio {
+      background: var(--bg-cream);
+      padding: 8rem 4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .bio-content .section-eyebrow {
+      margin-bottom: 1.5rem;
+    }
+
+    .bio-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .bio-title em {
+      font-style: italic;
+      color: var(--accent-coral);
+    }
+
+    .bio-text {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .journey-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .journey-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+    }
+
+    .journey-item:hover {
+      border-color: var(--accent-coral);
+    }
+
+    .journey-marker {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-warm);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .journey-marker svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--accent-coral);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .journey-text h4 {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .journey-text p {
+      color: var(--text-medium);
+      font-size: 0.9rem;
+    }
+
+    .bio-visual {
+      position: relative;
+    }
+
+    .bio-image-frame {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .bio-image-frame img {
+      width: 100%;
+      display: block;
+    }
+
+    .floating-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--accent-coral);
+      color: #fff;
+      padding: 1.25rem 1.75rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(196, 101, 74, 0.3);
+    }
+
+    .floating-badge span {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    /* Why This Moment Section */
+    .moment {
+      background: var(--bg-sage);
+      color: #fff;
+      padding: 8rem 4rem;
+    }
+
+    .moment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .moment-visual img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .moment-content .section-eyebrow {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .moment-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .moment-text {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .moment-statement {
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      border-left: 4px solid var(--accent-coral);
+    }
+
+    .moment-statement p {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #fff;
+    }
+
+    /* Resources Section */
+    .resources {
+      padding: 8rem 4rem;
+    }
+
+    .resources .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 4rem;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .resource-card {
+      background: #fff;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+      transition: all 0.4s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .resource-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--bg-warm);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    .resource-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--accent-coral);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .resource-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-card p {
+      color: var(--text-medium);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .resource-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: var(--bg-warm);
+      padding: 8rem 4rem;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .cta-visual img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .cta-content {
+      max-width: 500px;
+    }
+
+    .cta .section-eyebrow {
+      color: var(--accent-teal);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-title em {
+      font-style: italic;
+      color: var(--accent-coral);
+    }
+
+    .cta-text {
+      color: var(--text-medium);
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-list {
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      color: var(--text-medium);
+    }
+
+    .cta-list svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--accent-coral);
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .footer-left h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-left p {
+      color: var(--text-medium);
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-left a {
+      color: var(--accent-coral);
+      text-decoration: none;
+    }
+
+    .footer-left a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-right p {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .social-links a {
+      color: var(--text-medium);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-coral);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 400px;
+      }
+
+      .problem-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .solution-grid,
+      .bio,
+      .moment-grid,
+      .cta-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .bio-visual {
+        order: -1;
+      }
+
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav, .problems, .pillars, .bio, .cta, footer, .video-section, .solution, .moment, .resources {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-banner {
+        padding: 3rem 1.5rem;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .footer-right {
+        text-align: center;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Maillard Howell</div>
+    <ul class="nav-links">
+      <li><a href="#problems">Issue</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#pillars">Plan</a></li>
+      <li><a href="#bio">Why Me</a></li>
+      <li><a href="#cta">Help Me</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Candidate for NYC Director of Sports, Wellness & Recreation</div>
+      <h1 class="hero-title">A Healthier, More <em>Active</em>, More Connected New York City</h1>
+      <p class="hero-subtitle">A vision where every neighborhood, from Bed-Stuy to City Island, from Jackson Heights to Stapleton, has real access to movement, play, and lifelong wellbeing.</p>
+      <div class="hero-cta">
+        <a href="https://drive.google.com/file/d/1leb97DuRPGwDYeeryL2cclR2sxFDOMp1/view" target="_blank" class="btn btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Strategy Deck
+        </a>
+        <a href="https://drive.google.com/file/d/1l9iGU4og9TEBrJoojPvTyc3dMEc7PNbK/view" target="_blank" class="btn btn-outline">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          30-60-90 & 4 Year Plan
+        </a>
+        <a href="https://drive.google.com/file/d/18bxD8FmhqtsEMXI_1ovj3-HQKVOvwjku/view" target="_blank" class="btn btn-outline">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          CV
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="assets/hero-image.jpg" alt="Youth playing sports in NYC">
+    </div>
+  </section>
+
+  <div class="quote-banner">
+    <p class="quote-text">"Movement as a right, not a privilege."</p>
+  </div>
+
+  <section class="problems" id="problems">
+    <div class="section-header">
+      <div class="section-eyebrow">The Challenge</div>
+      <h2 class="section-title">New York Moves - But Not Equally</h2>
+      <p class="section-desc">When you walk through New York City, you feel possibility everywhere but you also see the gaps.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>School PE Is Shrinking</h3>
+        <p>Physical education time has steadily decreased across many NYC schools, leaving students with fewer opportunities to move, play, and build lifelong healthy habits. The inequity is most visible in low-income districts.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Youth Sports Privatized</h3>
+        <p>As community leagues shrink and private clubs expand, thousands of kids, especially in underserved neighborhoods, are priced out of structured sport. Access now depends more on income than interest or talent.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Seniors Lack Support</h3>
+        <p>New York's older adults face barriers ranging from unsafe sidewalks to limited strength and balance programming. Many want to stay active but lack structured support for mobility, independence, and social connection.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3>Disability Access Limited</h3>
+        <p>Adaptive programs, accessible facilities, and trained staff remain unevenly distributed across the city. Too many New Yorkers with disabilities encounter barriers that prevent full participation in movement, recreation, and sport.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="solution" id="solution">
+    <div class="solution-grid">
+      <div class="solution-content">
+        <div class="section-eyebrow">The Opportunity</div>
+        <h2 class="solution-title">A Citywide Movement Framework - <em>Beyond the Silos</em></h2>
+        <p class="solution-text">Sports and recreation are often viewed as "nice to have," but they are among NYC's strongest tools for improving public health, mental wellbeing, school outcomes, workforce performance, and community safety.</p>
+        <p class="solution-text"><strong>The Problem:</strong> NYC's movement system is fragmented. Agencies, schools, facilities, community groups, and nonprofits all work hard, but they operate separately. The issue isn't talent or effort. It's misalignment.</p>
+        <p class="solution-text"><strong>The Opportunity:</strong> My vision unifies these pieces into a coordinated, citywide movement ecosystem that serves every New Yorker with clarity, consistency, and access.</p>
+        <a href="https://drive.google.com/file/d/1leb97DuRPGwDYeeryL2cclR2sxFDOMp1/view" target="_blank" class="btn btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Full Framework in Strategy Deck
+        </a>
+      </div>
+      <div class="solution-visual">
+        <img src="assets/movement-as-a-right.jpg" alt="Movement-centered community">
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars" id="pillars">
+    <div class="section-header">
+      <div class="section-eyebrow">The Strategy</div>
+      <h2 class="section-title" style="color: #fff;">Three Strategic Clusters</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-number">01</div>
+        <h3>Access & Equity</h3>
+        <p>Ensuring every New Yorker across every borough, age, income level, and ability has real opportunities to move.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-number">02</div>
+        <h3>Community Infrastructure</h3>
+        <p>Modernizing and activating the parks, facilities, and public spaces that shape our daily lives.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-number">03</div>
+        <h3>Lifelong Performance & Longevity</h3>
+        <p>Movement pathways through every stage of life from youth play to adult recreation to aging well.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <div class="section-header">
+      <div class="section-eyebrow">Hear From Me</div>
+      <h2 class="section-title">My Thoughts</h2>
+    </div>
+    <div class="video-container">
+      <div class="video-placeholder">
+        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span>Video Coming Soon</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bio" id="bio">
+    <div class="bio-content">
+      <div class="section-eyebrow">Why My Path Leads Here</div>
+      <h2 class="bio-title">A Career Built Around <em>Movement</em></h2>
+      <p class="bio-text">A career built around understanding systems, building culture, and designing movement-driven health strategies.</p>
+      <div class="journey-list">
+        <div class="journey-item">
+          <div class="journey-marker">
+            <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          </div>
+          <div class="journey-text">
+            <h4>Pharmaceutical Industry</h4>
+            <p>Learned the realities of systemic health challenges and gaps in population wellbeing.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-marker">
+            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div class="journey-text">
+            <h4>CrossFit Community</h4>
+            <p>Built movement-centered culture and coached diverse communities toward long-term health.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-marker">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <div class="journey-text">
+            <h4>Reebok</h4>
+            <p>Scaled community and corporate wellness initiatives across large organizations.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-marker">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="journey-text">
+            <h4>Rokt</h4>
+            <p>Designed global workplace health systems focused on performance, resilience, and prevention.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-marker">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="journey-text">
+            <h4>Eternal</h4>
+            <p>Leveraged data, diagnostics, and behavior change science to improve long-term human health.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bio-visual">
+      <div class="bio-image-frame">
+        <img src="assets/why-my-path-leads-here.jpg" alt="Maillard Howell">
+      </div>
+      <div class="floating-badge">
+        <span>11+</span>
+        Years of Experience
+      </div>
+    </div>
+  </section>
+
+  <section class="moment">
+    <div class="moment-grid">
+      <div class="moment-visual">
+        <img src="assets/why-this-matters-most.jpg" alt="New York City Community">
+      </div>
+      <div class="moment-content">
+        <div class="section-eyebrow">The Urgency</div>
+        <h2 class="moment-title">Why This Moment Matters</h2>
+        <p class="moment-text">New York City is at an inflection point. Rising inactivity, mental health strain, and widening inequity threaten the wellbeing of millions. At the same time, we're seeing unprecedented innovation, community energy, and public interest in wellness.</p>
+        <div class="moment-statement">
+          <p>The opportunity is clear. We can connect schools, parks, community centers, public facilities, healthcare, and workplaces into a coordinated movement ecosystem that serves every neighborhood and every New Yorker.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="resources" id="resources">
+    <div class="section-header">
+      <div class="section-eyebrow">Deep Dive</div>
+      <h2 class="section-title">Explore My Full Strategy & Background</h2>
+    </div>
+    <div class="resources-grid">
+      <div class="resource-card">
+        <div class="resource-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Strategy Deck</h3>
+        <p>A 15-slide overview of challenges, opportunities, and long-term vision.</p>
+        <a href="https://drive.google.com/file/d/1leb97DuRPGwDYeeryL2cclR2sxFDOMp1/view" target="_blank" class="btn btn-outline">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+      <div class="resource-card">
+        <div class="resource-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>30-60-90 Day Plan</h3>
+        <p>My short and long term plan for the first year and beyond.</p>
+        <a href="https://drive.google.com/file/d/1l9iGU4og9TEBrJoojPvTyc3dMEc7PNbK/view" target="_blank" class="btn btn-outline">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+      <div class="resource-card">
+        <div class="resource-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Curriculum Vitae</h3>
+        <p>My past 11 years of experience in wellness and systems design.</p>
+        <a href="https://drive.google.com/file/d/18bxD8FmhqtsEMXI_1ovj3-HQKVOvwjku/view" target="_blank" class="btn btn-outline">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="cta">
+    <div class="cta-grid">
+      <div class="cta-visual">
+        <img src="assets/help-amplify.jpg" alt="City Hall Park - NYC Parks">
+      </div>
+      <div class="cta-content">
+        <div class="section-eyebrow">Take Action</div>
+        <h2 class="cta-title">Help Amplify This <em>Vision</em></h2>
+        <p class="cta-text">If this resonates, I would appreciate your support:</p>
+        <ul class="cta-list">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Share this page
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            Tag leaders, educators, and NYC officials
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Spark conversations in your communities
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Support movement and public wellbeing across NYC
+          </li>
+        </ul>
+        <div class="cta-buttons">
+          <a href="#" class="btn btn-primary">
+            <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Share This Vision
+          </a>
+          <a href="mailto:MNHowell00@gmail.com" class="btn btn-outline">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-left">
+      <h3>Let's Connect</h3>
+      <p>Open to conversations with city leaders, educators, healthcare partners, community organizations, and New Yorkers committed to building a more active city.</p>
+      <p><a href="mailto:MNHowell00@gmail.com">MNHowell00@gmail.com</a></p>
+    </div>
+    <div class="footer-right">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/maillardhowell/" target="_blank">LinkedIn</a>
+      </div>
+      <p>&copy; 2024 Maillard Howell. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
